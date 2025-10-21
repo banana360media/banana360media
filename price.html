@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Editing Service Pricing - Liquid Glass</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Load Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* --- CORE STYLING & BACKGROUND --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #e2e8f0; /* Main text color (off-white) */
+            background-color: #020617; /* Dark navy blue background */
+            overflow-x: hidden; /* Prevent horizontal scrolling from blobs */
+        }
+
+        /* --- LIQUID GLASS EFFECT (GLASSMORPHISM) --- */
+        .glass-panel {
+            background-color: rgba(30, 41, 59, 0.35); /* Frosted glass background color */
+            backdrop-filter: blur(24px); /* Increased blur for a stronger effect */
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Soft light border for the glass */
+            border-radius: 1.25rem; /* Softer corners */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Shadow to lift the panel */
+            transition: all 0.3s ease-in-out;
+        }
+
+        .glass-panel:hover {
+            background-color: rgba(30, 41, 59, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        /* --- ANIMATED BLOBS BACKGROUND EFFECT --- */
+        .blob-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1; /* Place behind all content */
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px); /* Heavy blur to create soft light glows */
+            opacity: 0.6;
+        }
+
+        /* Blue Blob */
+        .blue-blob {
+            width: 500px;
+            height: 500px;
+            background: rgba(59, 130, 246, 0.4); /* Blue color */
+            top: -150px;
+            left: -150px;
+            animation: moveBlue 25s infinite alternate ease-in-out;
+        }
+
+        /* Yellow Blob */
+        .yellow-blob {
+            width: 400px;
+            height: 400px;
+            background: rgba(234, 179, 8, 0.4); /* Amber yellow color */
+            bottom: -100px;
+            right: -100px;
+            animation: moveYellow 30s infinite alternate ease-in-out;
+        }
+        
+        /* Animation for Blue Blob */
+        @keyframes moveBlue {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40vw, 50vh) scale(1.2); }
+            100% { transform: translate(10vw, -10vh) scale(1); }
+        }
+
+        /* Animation for Yellow Blob */
+        @keyframes moveYellow {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30vw, -40vh) scale(1.3); }
+            100% { transform: translate(5vw, 20vh) scale(1); }
+        }
+
+        /* --- OTHER COMPONENTS --- */
+        .tab-active {
+            background: linear-gradient(90deg, #22d3ee, #3b82f6);
+            color: white;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+        }
+        .tab-inactive {
+            background-color: rgba(55, 65, 81, 0.5);
+            color: #d1d5db;
+        }
+        .scrollable-table {
+            overflow-x: auto;
+        }
+
+        /* --- LIQUID GLASS TEXT EFFECT --- */
+        .text-glass {
+            color: rgba(255, 255, 255, 0.95); 
+            text-shadow: 
+                0 0 8px rgba(59, 130, 246, 0.6), 
+                0 0 20px rgba(234, 179, 8, 0.4),
+                1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <!-- Container for animated blobs -->
+    <div class="blob-container">
+        <div class="blob blue-blob"></div>
+        <div class="blob yellow-blob"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        <!-- HEADER -->
+        <header class="text-center mb-16">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4 tracking-tight text-glass">VIDEO EDITING SERVICE PRICING</h1>
+            <div class="mt-6 glass-panel inline-block p-4 text-lg font-medium border-amber-500/50">
+                Turnaround Time: <span class="font-bold text-amber-300">8 - 24 Hours</span>
+            </div>
+        </header>
+
+        <!-- PRICING FORMULA SECTION -->
+        <div class="glass-panel p-8 mb-16 rounded-3xl text-center border-cyan-400/50">
+            <h2 class="text-2xl font-bold text-cyan-300 mb-4 tracking-wide text-glass">PRICING FORMULA</h2>
+            <p class="text-3xl font-extrabold text-white">
+                A + ( B1 <span class="text-amber-300">or</span> B2 ) + C
+            </p>
+            <p class="text-base italic text-slate-400 mt-4">(Choose B1 or B2 based on Input complexity - Only one applies)</p>
+        </div>
+
+        <!-- SECTION A: BASE PRICE -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-green-400 mb-8 border-b border-green-400/30 pb-4 flex items-center text-glass">
+                <i data-lucide="dollar-sign" class="w-8 h-8 mr-4 text-green-400"></i>
+                A. BASE PRICE
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass-panel p-8">
+                    <h3 class="text-xl font-semibold text-white mb-4">Pricing by Video Length</h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-center text-lg p-3 rounded-lg hover:bg-white/10 transition">
+                            <span>Video under 30 seconds:</span>
+                            <span class="font-bold text-red-400">30 USD/video</span>
+                        </li>
+                        <li class="flex justify-between items-center text-lg p-3 rounded-lg hover:bg-white/10 transition">
+                            <span>Video 30s - 1 minute:</span>
+                            <span class="font-bold text-red-400">35 USD/video</span>
+                        </li>
+                        <li class="flex justify-between items-center text-lg bg-amber-500/10 p-4 rounded-lg border border-amber-500/50">
+                            <span>Over 1 minute:</span>
+                            <span class="font-bold text-amber-300">35 USD + 15 USD/add. min</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="glass-panel p-8">
+                    <h3 class="text-xl font-semibold text-white mb-4">Advanced Services</h3>
+                    <div class="flex justify-between items-center text-lg border-b border-white/10 pb-4 mb-4">
+                        <span>Agent, 3D Text, Caption:</span>
+                        <span class="font-bold text-red-400">45 USD/video</span>
+                    </div>
+                    <p class="text-sm text-slate-400 italic pt-2">
+                        * Details for special effects are in Section D. Please send a sample for an accurate quote.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SECTION B: INPUT SURCHARGE -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-orange-400 mb-8 border-b border-orange-400/30 pb-4 flex items-center text-glass">
+                <i data-lucide="layers" class="w-8 h-8 mr-4 text-orange-400"></i>
+                B. INPUT SURCHARGE
+            </h2>
+            
+            <div class="flex space-x-2 md:space-x-4 mb-8 justify-center" role="tablist">
+                <button id="tab-b1" onclick="showTab('b1')" class="px-6 py-3 rounded-full font-semibold transition duration-300 tab-active text-sm md:text-base">
+                    By NUMBER of Files
+                </button>
+                <button id="tab-b2" onclick="showTab('b2')" class="px-6 py-3 rounded-full font-semibold transition duration-300 tab-inactive text-sm md:text-base">
+                    By TOTAL DURATION
+                </button>
+            </div>
+
+            <div id="content-b1" class="tab-content glass-panel p-8">
+                <h3 class="text-xl font-semibold text-amber-300 mb-6 text-center">B1. Surcharge by NUMBER of Input Files</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <!-- Tiers -->
+                    <div class="text-center p-4 bg-slate-900/50 rounded-xl">
+                        <p class="text-sm text-slate-400">Tier 1</p>
+                        <p class="font-bold mb-1 text-green-400">1-70 Files</p>
+                        <div class="text-3xl font-extrabold text-white">0$</div>
+                    </div>
+                    <div class="text-center p-4 bg-slate-900/50 rounded-xl">
+                        <p class="text-sm text-slate-400">Tier 2</p>
+                        <p class="font-bold mb-1 text-yellow-300">>70-100</p>
+                        <div class="text-3xl font-extrabold text-white">5$</div>
+                    </div>
+                    <div class="text-center p-4 bg-slate-900/50 rounded-xl">
+                        <p class="text-sm text-slate-400">Tier 3</p>
+                        <p class="font-bold mb-1 text-orange-300">100-150</p>
+                        <div class="text-3xl font-extrabold text-white">15$</div>
+                    </div>
+                    <div class="text-center p-4 bg-slate-900/50 rounded-xl">
+                        <p class="text-sm text-slate-400">Tier 4</p>
+                        <p class="font-bold mb-1 text-red-400">150-200</p>
+                        <div class="text-3xl font-extrabold text-white">25$</div>
+                    </div>
+                    <div class="text-center p-4 bg-slate-900/50 rounded-xl">
+                        <p class="text-sm text-slate-400">Tier 5</p>
+                        <p class="font-bold mb-1 text-purple-400">200-300</p>
+                        <div class="text-3xl font-extrabold text-white">35$</div>
+                    </div>
+                    <div class="text-center p-4 bg-slate-900/50 rounded-xl">
+                        <p class="text-sm text-slate-400">Max Tier</p>
+                        <p class="font-bold mb-1 text-pink-400">>300</p>
+                        <div class="text-3xl font-extrabold text-white">50$</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-b2" class="tab-content hidden glass-panel p-8">
+                 <h3 class="text-xl font-semibold text-amber-300 mb-6 text-center">B2. Surcharge by TOTAL Input Duration</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="text-center p-6 bg-slate-900/50 rounded-xl">
+                        <i data-lucide="clock" class="w-8 h-8 mx-auto mb-3 text-green-400"></i>
+                        <p class="font-bold text-green-300">Under 15 minutes</p>
+                        <div class="text-4xl font-extrabold text-white mt-2">0$</div>
+                    </div>
+                     <div class="text-center p-6 bg-slate-900/50 rounded-xl">
+                        <i data-lucide="timer" class="w-8 h-8 mx-auto mb-3 text-yellow-400"></i>
+                        <p class="font-bold text-yellow-300">15 - 60 minutes</p>
+                        <div class="text-4xl font-extrabold text-white mt-2">10-20$</div>
+                    </div>
+                     <div class="text-center p-6 bg-slate-900/50 rounded-xl">
+                        <i data-lucide="fast-forward" class="w-8 h-8 mx-auto mb-3 text-orange-400"></i>
+                        <p class="font-bold text-orange-300">1.5 - 2 hours</p>
+                        <div class="text-4xl font-extrabold text-white mt-2">30$</div>
+                    </div>
+                     <div class="text-center p-6 bg-slate-900/50 rounded-xl">
+                        <i data-lucide="hourglass" class="w-8 h-8 mx-auto mb-3 text-red-400"></i>
+                        <p class="font-bold text-red-300">Over 3 hours</p>
+                        <div class="text-4xl font-extrabold text-white mt-2">45$</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION C: FILE SIZE SURCHARGE -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-sky-400 mb-8 border-b border-sky-400/30 pb-4 flex items-center text-glass">
+                <i data-lucide="hard-drive" class="w-8 h-8 mr-4 text-sky-400"></i>
+                C. FILE SIZE SURCHARGE
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                 <div class="glass-panel text-center p-8">
+                    <i data-lucide="folder" class="w-10 h-10 mx-auto mb-4 text-green-400"></i>
+                    <p class="text-lg font-bold mb-1 text-green-300">Under 50GB</p>
+                    <div class="text-3xl font-extrabold text-white mt-3">0$</div>
+                </div>
+                 <div class="glass-panel text-center p-8">
+                    <i data-lucide="folder-open" class="w-10 h-10 mx-auto mb-4 text-yellow-400"></i>
+                    <p class="text-lg font-bold mb-1 text-yellow-300">Over 50GB</p>
+                    <div class="text-3xl font-extrabold text-white mt-3">10$</div>
+                </div>
+                <div class="glass-panel text-center p-8">
+                    <i data-lucide="database" class="w-10 h-10 mx-auto mb-4 text-orange-400"></i>
+                    <p class="text-lg font-bold mb-1 text-orange-300">Over 70GB</p>
+                    <div class="text-3xl font-extrabold text-white mt-3">15$</div>
+                </div>
+                <div class="glass-panel text-center p-8">
+                    <i data-lucide="server" class="w-10 h-10 mx-auto mb-4 text-red-400"></i>
+                    <p class="text-lg font-bold mb-1 text-red-300">Over 100GB</p>
+                    <div class="text-3xl font-extrabold text-white mt-3">20$</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION D: SPECIAL EFFECTS PRICING -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-indigo-400 mb-8 border-b border-indigo-400/30 pb-4 flex items-center text-glass">
+                <i data-lucide="sparkles" class="w-8 h-8 mr-4 text-indigo-400"></i>
+                D. SPECIAL EFFECTS PRICING
+            </h2>
+            <div class="scrollable-table glass-panel p-2 md:p-5 rounded-3xl">
+                <table class="w-full text-sm table-auto">
+                    <thead>
+                        <tr class="border-b border-white/10">
+                            <th class="p-4 text-white text-left font-semibold">Effect</th>
+                            <th class="p-4 text-white text-left font-semibold">Description</th>
+                            <th class="p-4 text-white text-center font-semibold">Cost (USD)</th>
+                            <th class="p-4 text-white text-left font-semibold hidden md:table-cell">Notes</th>
+                            <th class="p-4 text-white text-center font-semibold">Sample</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data rows -->
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition">
+                            <td class="p-4 font-medium">Masking</td>
+                            <td class="p-4 text-slate-300">Technique to mask/reveal parts of a video, create transitions, or composite images.</td>
+                            <td class="p-4 text-center"><span class="bg-green-500/20 text-green-300 font-bold px-3 py-1 rounded-full">Free</span></td>
+                            <td class="p-4 text-slate-400 hidden md:table-cell">Free for one-time use</td>
+                            <td class="p-4 text-center"><a href="https://www.dropbox.com/scl/fo/rjywnrfjp5hgx1xnoxxb7/ALYFAc7Y9rEwj4QCS0Vo_as?rlkey=topd0mrrnr4qe6erf4s9skopy&dl=0" target="_blank" class="text-cyan-400 hover:underline">Link</a></td>
+                        </tr>
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition">
+                            <td class="p-4 font-medium">Drop house</td>
+                            <td class="p-4 text-slate-300">Effect where a house appears to drop from the sky.</td>
+                            <td class="p-4 text-center"><span class="bg-green-500/20 text-green-300 font-bold px-3 py-1 rounded-full">Free</span></td>
+                            <td class="p-4 text-slate-400 hidden md:table-cell">Free for one-time use</td>
+                            <td class="p-4 text-center"><a href="https://www.dropbox.com/scl/fo/gkcc1m20lo6qk8yxs2ayi/AOdxPVhRlgXRWHVj-hynsBk?rlkey=cnri4aqyxk65tz5fheuk4x36v&dl=0" target="_blank" class="text-cyan-400 hover:underline">Link</a></td>
+                        </tr>
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition">
+                            <td class="p-4 font-medium">Day to night</td>
+                            <td class="p-4 text-slate-300">Transition footage from day to night and vice versa.</td>
+                            <td class="p-4 text-center"><span class="bg-green-500/20 text-green-300 font-bold px-3 py-1 rounded-full">Free</span></td>
+                            <td class="p-4 text-slate-400 hidden md:table-cell"></td>
+                            <td class="p-4 text-center"><a href="https://www.dropbox.com/scl/fo/srjb4mvrucodrg57amjzw/APLFOQ5VFhbGAhDKgGqaYZw?rlkey=xran4h81bznyxg2iylsuosgrj&dl=0" target="_blank" class="text-cyan-400 hover:underline">Link</a></td>
+                        </tr>
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition">
+                            <td class="p-4 font-medium">Zoom earth</td>
+                            <td class="p-4 text-slate-300">Fast zoom effect from space down to a location on Earth.</td>
+                            <td class="p-4 text-center"><span class="bg-green-500/20 text-green-300 font-bold px-3 py-1 rounded-full">Free</span></td>
+                            <td class="p-4 text-slate-400 hidden md:table-cell">Free for one-time use</td>
+                            <td class="p-4 text-center"><a href="https://www.dropbox.com/scl/fo/w8g8m3om3ivzczgg9ie7l/ABeHVXtmCMQwZQXoLTpOyH0?rlkey=8zafnu36hd8qo27ovol8zk0os&dl=0" target="_blank" class="text-cyan-400 hover:underline">Link</a></td>
+                        </tr>
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition">
+                            <td class="p-4 font-medium">Cut out (3-5 layer)</td>
+                            <td class="p-4 text-slate-300">Isolate a subject from its background or remove parts of an image/video.</td>
+                            <td class="p-4 text-center"><span class="bg-green-500/20 text-green-300 font-bold px-3 py-1 rounded-full">Free</span></td>
+                            <td class="p-4 text-slate-400 hidden md:table-cell">Free for one-time use</td>
+                            <td class="p-4 text-center"><a href="https://www.dropbox.com/scl/fo/5nizivqpt7i0msj6lok6s/ADci7PGQNqNPH41S85d-4n4?rlkey=rjkuj470wpqw0g2p4cbebaky9&dl=0" target="_blank" class="text-cyan-400 hover:underline">Link</a></td>
+                        </tr>
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition">
+                            <td class="p-4 font-medium">Roto</td>
+                            <td class="p-4 text-slate-300">Frame-by-frame subject tracking to remove/replace backgrounds or add effects.</td>
+                            <td class="p-4 text-center"><span class="bg-green-500/20 text-green-300 font-bold px-3 py-1 rounded-full">Free</span></td>
+                            <td class="p-4 text-slate-400 hidden md:table-cell"></td>
+                            <td class="p-4 text-center"><a href="https://www.dropbox.com/scl/fo/11prfsfhdbm72luzyx0zu/AHDokT0xBfScp037aC-s2qU?rlkey=rxn0g52qu8jo35kvu85lps0wu&dl=0" target="_blank" class="text-cyan-400 hover:underline">Link</a></td>
+                        </tr>
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition">
+                            <td class="p-4 font-medium">3D Text</td>
+                            <td class="p-4 text-slate-300">Create 3D text to emphasize ideas and grab attention.</td>
+                            <td class="p-4 text-center"><span class="bg-green-500/20 text-green-300 font-bold px-3 py-1 rounded-full">Free*</span></td>
+                            <td class="p-4 text-slate-400 hidden md:table-cell">*Charged when combined with Agent.</td>
+                            <td class="p-4 text-center"><a href="https://www.dropbox.com/scl/fo/ikbybsmm8y3o410gejji0/ABDTqnGFFB2CUItHluxqimk?rlkey=ddyzb23e8a58y8vj54dmvpwii&dl=0" target="_blank" class="text-cyan-400 hover:underline">Link</a></td>
+                        </tr>
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition">
+                            <td class="p-4 font-medium">Text Animation</td>
+                            <td class="p-4 text-slate-300">Animated text for an Agent's dialogue to create engagement.</td>
+                            <td class="p-4 text-center"><span class="bg-green-500/20 text-green-300 font-bold px-3 py-1 rounded-full">Free*</span></td>
+                            <td class="p-4 text-slate-400 hidden md:table-cell">*Charged when combined with Agent.</td>
+                            <td class="p-4 text-center"><a href="https://www.dropbox.com/scl/fo/mzpeee1vs4bj2nd9b7d8y/ACdPM2p3Ka_LW02p6hQj-8k?rlkey=6qlgl9cvq8gf0h14bljyyweko&dl=0" target="_blank" class="text-cyan-400 hover:underline">Link</a></td>
+                        </tr>
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition">
+                            <td class="p-4 font-medium">Luma Glow</td>
+                            <td class="p-4 text-slate-300">Glowing effect that highlights objects, creating a unique look.</td>
+                            <td class="p-4 text-center"><span class="bg-green-500/20 text-green-300 font-bold px-3 py-1 rounded-full">Free</span></td>
+                            <td class="p-4 text-slate-400 hidden md:table-cell"></td>
+                            <td class="p-4 text-center"><a href="https://www.dropbox.com/scl/fo/5b7xuqr1lo2fqdewwc2ui/AM-V161Ev5z31UsifbjJxt8?rlkey=1y429v7ktdqnvfmog8lzjscyi&dl=0" target="_blank" class="text-cyan-400 hover:underline">Link</a></td>
+                        </tr>
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition">
+                            <td class="p-4 font-medium">Forward effect</td>
+                            <td class="p-4 text-slate-300">Fast-paced transition effects to captivate viewers.</td>
+                            <td class="p-4 text-center"><span class="bg-green-500/20 text-green-300 font-bold px-3 py-1 rounded-full">Free</span></td>
+                            <td class="p-4 text-slate-400 hidden md:table-cell"></td>
+                            <td class="p-4 text-center"><a href="https://www.dropbox.com/scl/fo/iodo547x77rxm69pif3ox/ADo2A_T27GYykscUGKjyyw0?rlkey=z44f0ygt2t8y02aocujp5595l&dl=0" target="_blank" class="text-cyan-400 hover:underline">Link</a></td>
+                        </tr>
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition">
+                            <td class="p-4 font-medium">Border line</td>
+                            <td class="p-4 text-slate-300">Draw boundary lines to mark a property's location.</td>
+                            <td class="p-4 text-center"><span class="bg-green-500/20 text-green-300 font-bold px-3 py-1 rounded-full">Free</span></td>
+                            <td class="p-4 text-slate-400 hidden md:table-cell">Free for one-time use</td>
+                            <td class="p-4 text-center"><a href="https://www.dropbox.com/scl/fo/x1b6yqh5i6wnk0r8j6xzr/ADI3Sg_HwRxsg_ubzvEvVo8?rlkey=5x6qxcmg9o58ud916tag5wktf&dl=0" target="_blank" class="text-cyan-400 hover:underline">Link</a></td>
+                        </tr>
+                         <tr class="hover:bg-white/5 transition">
+                            <td class="p-4 font-medium">AI Effect (Interior)</td>
+                            <td class="p-4 text-slate-300">AI-powered effect to furnish/unfurnish an empty room.</td>
+                            <td class="p-4 text-center"><span class="bg-red-500/20 text-red-300 font-bold px-3 py-1 rounded-full">15$</span></td>
+                            <td class="p-4 text-slate-400 hidden md:table-cell"></td>
+                            <td class="p-4 text-center"><a href="https://www.dropbox.com/scl/fo/thp06mreohmsgtp8s8aqx/AIzA5PQ2dFfbR_LlTxUSJ9w?rlkey=k495fndbhqmh84cr77w4uqyyb&dl=0" target="_blank" class="text-cyan-400 hover:underline">Link</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // JavaScript to switch between Tab B1 and B2
+        function showTab(tabId) {
+            const tabs = ['b1', 'b2'];
+            
+            tabs.forEach(id => {
+                const tabButton = document.getElementById(`tab-${id}`);
+                const tabContent = document.getElementById(`content-${id}`);
+                
+                if (id === tabId) {
+                    tabButton.classList.add('tab-active');
+                    tabButton.classList.remove('tab-inactive');
+                    tabContent.classList.remove('hidden');
+                } else {
+                    tabButton.classList.remove('tab-active');
+                    tabButton.classList.add('tab-inactive');
+                    tabContent.classList.add('hidden');
+                }
+            });
+        }
+        
+        // Initialize and render icons
+        document.addEventListener('DOMContentLoaded', () => {
+            showTab('b1');
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>
+
