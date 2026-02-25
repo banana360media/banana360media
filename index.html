@@ -1,1481 +1,430 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth bg-[#030014]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Banana360media - Real Estate Post-Production</title>
-    
-    <meta name="description" content="Banana360media offers cinematic real estate video editing and post-production. We transform raw footage into high-value marketing assets.">
-    
-    <link rel="canonical" href="https://banana360media.com">
-
-    <meta property="og:title" content="Banana360media - Real Estate Post-Production">
-    <meta property="og:description" content="We transform raw footage into cinematic, high-value marketing assets for real estate.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://banana360media.com">
-    <meta property="og:image" content="https://banana360media.com/social-image.jpg"> <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Banana360media - Real Estate Post-Production">
-    <meta name="twitter:description" content="We transform raw footage into cinematic, high-value marketing assets for real estate.">
-    <meta name="twitter:image" content="https://banana360media.com/social-image.jpg"> <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    
-    <script src="https://unpkg.com/lucide@latest"></script>
-
+    <title>Banana 360 Media | Futuristic Real Estate Post-Production</title>
+    <link rel="icon" href="https://fav.farm/🍌">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- Cài đặt chung & Font chữ (Giống Apple) --- */
-        :root {
-            --bg-color: #000000;
-            --text-color: #f5f5f7;
-            --text-secondary: #a1a1a6;
-            --gold-color: #FFD700; /* Tông màu vàng cho thương hiệu */
-            --blue-highlight: #007aff; /* Màu xanh Apple */
-            --nav-height: 60px; /* Chiều cao của thanh nav */
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Space Grotesk', sans-serif; color: #e2e8f0; overflow-x: hidden; }
+        
+        /* Background & Stars */
+        .space-bg { position: fixed; inset: 0; background: radial-gradient(ellipse at bottom, #1a1400 0%, #030014 80%); z-index: -50; }
+        
+        .stars-container {
+            position: fixed; inset: -50%; width: 200%; height: 200%;
+            background-image: 
+                radial-gradient(2px 2px at 40px 60px, #ffffff, rgba(0,0,0,0)), 
+                radial-gradient(1px 1px at 90px 140px, rgba(255,255,255,0.7), rgba(0,0,0,0)), 
+                radial-gradient(2px 2px at 150px 30px, rgba(250, 204, 21, 0.8), rgba(0,0,0,0)), /* Yellow Tint Stars */
+                radial-gradient(1.5px 1.5px at 250px 180px, #ffffff, rgba(0,0,0,0)), 
+                radial-gradient(2px 2px at 320px 80px, rgba(250, 204, 21, 0.6), rgba(0,0,0,0));
+            background-repeat: repeat; background-size: 350px 350px; animation: drift 120s linear infinite; z-index: -40; opacity: 0.6;
         }
+        @keyframes drift { from { transform: translateY(0) rotate(0deg); } to { transform: translateY(-20%) rotate(2deg); } }
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: var(--nav-height); 
+        /* SHOOTING STARS ANIMATION (New) */
+        .shooting-star {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            height: 2px;
+            background: linear-gradient(-45deg, rgba(250, 204, 21, 1), rgba(0, 0, 0, 0));
+            border-radius: 999px;
+            filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.5));
+            animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
+            z-index: -35;
+            opacity: 0;
         }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            position: relative; /* Cần thiết cho nền động */
-        }
-
-        /* --- HIỆU ỨNG NỀN ĐỘNG (LIQUID BACKGROUND) --- */
-        body::before, body::after {
+        .shooting-star::before {
             content: '';
-            position: fixed;
-            z-index: -1;
-            border-radius: 50%;
-            filter: blur(150px);
-            opacity: 0.3;
+            position: absolute;
+            top: calc(50% - 1px);
+            right: 0;
+            height: 2px;
+            background: linear-gradient(-45deg, rgba(0, 0, 255, 0), rgba(250, 204, 21, 1), rgba(0, 0, 255, 0));
+            transform: translateX(50%) rotateZ(45deg);
+            border-radius: 100%;
+            animation: shining 3000ms ease-in-out infinite;
         }
+        .shooting-star::after {
+            content: '';
+            position: absolute;
+            top: calc(50% - 1px);
+            right: 0;
+            height: 2px;
+            background: linear-gradient(-45deg, rgba(0, 0, 255, 0), rgba(250, 204, 21, 1), rgba(0, 0, 255, 0));
+            transform: translateX(50%) rotateZ(45deg);
+            border-radius: 100%;
+            animation: shining 3000ms ease-in-out infinite;
+        }
+        @keyframes tail {
+            0% { width: 0; }
+            30% { width: 100px; }
+            100% { width: 0; }
+        }
+        @keyframes shooting {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(300px); }
+        }
+        /* Random positioning for stars */
+        .shooting-star:nth-child(1) { top: 0; left: 50%; animation-delay: 2s; }
+        .shooting-star:nth-child(2) { top: 20%; left: 10%; animation-delay: 6s; }
+        .shooting-star:nth-child(3) { top: 60%; left: 80%; animation-delay: 9s; }
+        .shooting-star:nth-child(4) { top: 80%; left: 30%; animation-delay: 14s; }
 
-        body::before {
-            width: 400px;
-            height: 400px;
-            background: var(--gold-color);
-            top: 10vh;
-            left: 10vw;
-            animation: orbit 25s linear infinite;
-        }
+
+        .nebula { position: fixed; border-radius: 50%; filter: blur(100px); z-index: -30; animation: float 20s infinite alternate; }
+        .nebula-1 { width: 50vw; height: 50vw; background: rgba(234, 179, 8, 0.1); top: -20%; left: -10%; } /* Yellow Tint */
+        .nebula-2 { width: 60vw; height: 60vw; background: rgba(250, 204, 21, 0.05); bottom: -20%; right: -10%; animation-direction: alternate-reverse; animation-duration: 25s; }
+
+        .glass-card { background: rgba(10, 10, 25, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(250, 204, 21, 0.15); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(250, 204, 21, 0.05); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .glass-card:hover { border: 1px solid rgba(250, 204, 21, 0.4); box-shadow: 0 0 30px rgba(250, 204, 21, 0.2), inset 0 0 20px rgba(250, 204, 21, 0.1); transform: translateY(-5px); }
         
-        body::after {
-            width: 500px;
-            height: 500px;
-            background: var(--blue-highlight);
-            bottom: 10vh;
-            right: 10vw;
-            animation: orbit-reverse 35s linear infinite;
-        }
+        .no-hover-jump:hover { transform: none !important; }
 
-        @keyframes orbit {
-            0% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(40vw, 20vh) scale(1.2); }
-            50% { transform: translate(60vw, -10vh) scale(1); }
-            75% { transform: translate(20vw, -30vh) scale(0.8); }
-            100% { transform: translate(0, 0) scale(1); }
-        }
+        .text-neon { text-shadow: 0 0 10px rgba(250, 204, 21, 0.6), 0 0 20px rgba(250, 204, 21, 0.3); }
+        /* Gradient updated to Yellow -> Orange */
+        .text-gradient { background: linear-gradient(135deg, #facc15 0%, #fb923c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        @keyframes orbit-reverse {
-            0% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(-30vw, -15vh) scale(0.8); }
-            50% { transform: translate(-50vw, 20vh) scale(1.2); }
-            75% { transform: translate(-10vw, 30vh) scale(1); }
-            100% { transform: translate(0, 0) scale(1); }
-        }
+        .btn-sci-fi { position: relative; overflow: hidden; box-shadow: 0 0 15px rgba(250, 204, 21, 0.4), inset 0 0 10px rgba(250, 204, 21, 0.2); border: 1px solid rgba(250, 204, 21, 0.8); }
+        .btn-sci-fi::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transform: skewX(-20deg); transition: 0.5s; }
+        .btn-sci-fi:hover::before { left: 150%; }
 
-        /* --- Main Content (Nằm bên trên nền) --- */
-        main {
-            position: relative;
-            z-index: 2; /* Đảm bảo nội dung nổi lên trên */
-        }
-
-        /* --- Thanh điều hướng (Glassmorphism) --- */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: var(--nav-height);
-            z-index: 1000;
-            padding: 0 5%;
-            
-            /* Hiệu ứng Glassmorphism */
-            background: rgba(12, 12, 12, 0.5); /* Màu nền bán trong suốt */
-            backdrop-filter: blur(20px); /* Hiệu ứng mờ nền */
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between; /* Đổi từ center sang space-between */
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            max-width: 1400px; /* Tăng max-width */
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--gold-color);
-            text-decoration: none;
-            position: relative;
-            z-index: 1010; /* Luôn nổi trên menu mobile */
-        }
-        
-        .logo span {
-            color: var(--text-color);
-        }
-
-        .nav-menu {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-menu li a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu li a:hover {
-            color: var(--text-color);
-        }
-
-        /* --- NÚT HAMBURGER (MOBI) --- */
-        .mobile-nav-toggle {
-            display: none; /* Ẩn trên desktop */
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 1010; /* Nằm trên menu mobile */
-            position: relative;
-        }
-
-        .hamburger-bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background-color: var(--text-color);
-            margin: 5px 0;
-            transition: all 0.3s ease-in-out;
-        }
-
-        /* --- Thẻ Glass (Dùng chung) --- */
-        .glass-card {
-            background: rgba(26, 26, 26, 0.4); /* Nền mờ hơn */
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            padding: 40px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
-        }
-
-        /* --- Section chung --- */
-        .section {
-            padding: 120px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: slideUp 1s forwards;
-            animation-play-state: paused;
-        }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-title {
-            font-size: 3rem; /* To hơn */
-            font-weight: 700;
-            color: var(--gold-color);
-            margin-bottom: 20px;
-            letter-spacing: -0.02em;
-        }
-
-        .section-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            max-width: 800px;
-            margin: 0 auto 60px auto;
-            line-height: 1.6;
-        }
-
-        /* --- Section 1: Hero (Home) --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: var(--nav-height) 20px 0;
-        }
-
-        .hero h1 {
-            font-size: 5rem; /* Rất lớn */
-            font-weight: 800;
-            margin: 0;
-            line-height: 1.05;
-            letter-spacing: -0.03em;
-            color: var(--text-color);
-        }
-        
-        .hero h1 .gold-text {
-            color: var(--gold-color);
-        }
-
-        .hero h2 {
-            font-size: 2rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin: 25px 0 0 0;
-            max-width: 600px;
-        }
-        
-        .cta-button {
-            margin-top: 40px;
-            padding: 15px 35px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--text-color);
-        }
-        
-        .cta-button:hover {
-            background: rgba(40, 40, 40, 0.7);
-            transform: translateY(0);
-        }
-
-
-        /* --- Section 2: Why Us (Mới) --- */
-        .why-us-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            text-align: left;
-        }
-
-        .why-us-grid .glass-card h4 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--gold-color);
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-
-        .why-us-grid .glass-card p {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* --- Section 3: Dịch vụ (Services) --- */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 25px;
-            text-align: left;
-        }
-
-        .features-grid .glass-card {
-            padding: 30px; /* Nhỏ hơn thẻ why-us */
-        }
-
-        .features-grid .glass-card h4 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-color);
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-        
-        .features-grid .glass-card h4 .icon {
-            color: var(--gold-color);
-            margin-right: 10px;
-        }
-
-        .features-grid .glass-card p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* --- Section 4: Quy trình (Process) --- */
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .process-step {
-            text-align: left;
-        }
-
-        .process-step .step-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--gold-color);
-            opacity: 0.5;
-            margin-bottom: 15px;
-        }
-
-        .process-step h4 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-color);
-            margin: 0 0 10px 0;
-        }
-
-        .process-step p {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin: 0;
-            line-height: 1.5;
-        }
-        
-        /* --- Section 5: Dự án (Projects) --- */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-        }
-
-        .project-card {
-            background-color: #1a1a1a;
-            border-radius: 20px;
-            overflow: hidden;
-            text-decoration: none;
-            color: var(--text-color);
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        
-        .project-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.15);
-        }
-
-        .project-thumbnail {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* Tỷ lệ 16:9 */
-            background-color: #333;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .project-thumbnail::after {
-            content: '▶';
-            position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%) scale(0.8);
-            font-size: 3rem; color: rgba(255, 255, 255, 0.9);
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            border-radius: 50%;
-            width: 80px; height: 80px;
-            display: flex; justify-content: center; align-items: center;
-            line-height: 80px;
-            opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        
-        .project-card:hover .project-thumbnail::after {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .project-info {
-            padding: 25px;
-            text-align: left;
-        }
-
-        .project-info h4 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin: 0 0 10px 0;
-        }
-
-        .project-info p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin: 0;
-        }
-
-        /* --- Section 6: Testimonials (Mới) --- */
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            text-align: left;
-        }
-        
-        .testimonial-card {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .testimonial-card .quote {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: var(--text-color);
-            line-height: 1.6;
-            margin-bottom: 20px;
-            flex-grow: 1; /* Đẩy author xuống dưới */
-        }
-        
-        .testimonial-card .author {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--gold-color);
-        }
-        
-        .testimonial-card .author span {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: var(--text-secondary);
-            display: block;
-        }
-
-        /* --- Section 7: FAQ (Mới) --- */
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-        }
-        
-        .faq-item {
-            padding: 0; /* Ghi đè padding của glass-card */
-            margin-bottom: 15px;
-            overflow: hidden; /* Cần thiết cho animation */
-        }
-        
-        .faq-question {
-            width: 100%;
-            background: none;
-            border: none;
-            padding: 25px 30px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-color);
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .faq-question::after {
-            content: '+';
-            font-size: 2rem;
-            font-weight: 300;
-            color: var(--gold-color);
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-item.active .faq-question::after {
-            transform: rotate(45deg); /* Chuyển thành dấu x */
-        }
-
-        .faq-answer {
-            max-height: 0; /* Ẩn ban đầu */
-            overflow: hidden;
-            transition: max-height 0.4s ease-out;
-        }
-        
-        .faq-answer p {
-            padding: 0 30px 25px 30px;
-            margin: 0;
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* --- Footer (Liên hệ) --- */
-        footer {
-            padding: 100px 5%;
-            text-align: center;
-            position: relative;
-            z-index: 2; /* Nổi lên trên nền */
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 100px;
-        }
-
-        footer h3 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--text-color);
-            margin-bottom: 20px;
-        }
-        
-        footer .section-subtitle {
-            margin-bottom: 40px;
-        }
-
-        .social-icons {
-            margin-top: 30px;
-        }
-
-        .social-icons a {
-            display: inline-block;
-            margin: 0 15px;
-            transition: transform 0.3s ease;
-        }
-        
-        .social-icons a:hover {
-            transform: scale(1.15) translateY(-3px);
-        }
-
-        .social-icons svg {
-            width: 32px;
-            height: 32px;
-            fill: var(--text-secondary);
-            transition: fill 0.3s ease;
-        }
-        
-        .social-icons a:hover svg {
-            fill: var(--gold-color);
-        }
-
-        .copyright {
-            margin-top: 50px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* --- CSS CHO SECTION PRICE (Thêm mới) --- */
-
-        /* CSS cho Tab */
-        .price-tabs {
-            display: flex;
-            gap: 10px; /* Khoảng cách giữa các tab */
-            margin-bottom: 30px;
-            justify-content: center;
-        }
-
-        .tab-button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 9999px; /* Bo tròn */
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .tab-active {
-            background: linear-gradient(90deg, #FFD700, #FBBF24); /* Màu vàng */
-            color: #000000; /* Chữ đen */
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-        }
-
-        .tab-inactive {
-            background-color: rgba(55, 65, 81, 0.5);
-            color: #d1d5db;
-        }
-        
-        .tab-inactive:hover {
-             background-color: rgba(71, 85, 105, 0.7);
-        }
-
-        .tab-content {
-            display: none; /* Ẩn tab content mặc định */
-        }
-        
-        /* CSS cho Bảng */
-        .scrollable-table {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch; /* Hỗ trợ cuộn mượt trên mobile */
-        }
-        
-        .price-table {
-            width: 100%;
-            min-width: 800px; /* Đảm bảo bảng có chiều rộng tối thiểu để cuộn */
-            border-collapse: collapse;
-            text-align: left;
-        }
-        
-        .price-table th, .price-table td {
-            padding: 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.95rem;
-            vertical-align: middle;
-        }
-        
-        .price-table th {
-            font-weight: 600;
-            color: var(--text-color);
-        }
-        
-        .price-table td {
-             color: var(--text-secondary);
-        }
-        
-        .price-table tr:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        
-        /* Hiệu ứng text */
-        .text-glass {
-            color: rgba(255, 255, 255, 0.95); 
-            text-shadow: 
-                0 0 8px rgba(255, 215, 0, 0.6), /* Bóng vàng */
-                0 0 20px rgba(0, 122, 255, 0.4), /* Chút bóng xanh */
-                1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-        
-        /* Các lớp tiện ích cho grid (lấy ý tưởng từ price.html) */
-        .grid { display: grid; }
-        .gap-6 { gap: 24px; }
-        .gap-8 { gap: 32px; }
-        .mb-16 { margin-bottom: 64px; }
-        .mb-12 { margin-bottom: 48px; }
-        .mb-8 { margin-bottom: 32px; }
-        .mb-6 { margin-bottom: 24px; }
-        .mb-4 { margin-bottom: 16px; }
-        .pb-4 { padding-bottom: 16px; }
-        .border-b { border-bottom-width: 1px; }
-        .border-gold-30 { border-color: rgba(255, 215, 0, 0.3); }
-        .text-left { text-align: left; }
-        .text-center { text-align: center; }
-        .text-xl { font-size: 1.25rem; }
-        .text-2xl { font-size: 1.5rem; }
-        .text-3xl { font-size: 1.875rem; }
-        .text-4xl { font-size: 2.25rem; }
-        .font-bold { font-weight: 700; }
-        .font-semibold { font-weight: 600; }
-        .font-extrabold { font-weight: 800; }
-        .text-green-400 { color: #4ade80; }
-        .text-green-300 { color: #86efac; }
-        .text-yellow-300 { color: #fde047; }
-        .text-orange-300 { color: #fdbb74; }
-        .text-red-400 { color: #f87171; }
-        .text-red-300 { color: #fca5a5; }
-        .text-purple-400 { color: #c084fc; }
-        .text-pink-400 { color: #f472b6; }
-        .text-cyan-400 { color: #22d3ee; }
-        .text-slate-400 { color: #94a3b8; }
-        .text-white { color: #ffffff; }
-        .italic { font-style: italic; }
-        .tracking-wide { letter-spacing: 0.025em; }
-
-        .flex { display: flex; }
-        .items-center { align-items: center; }
-        .justify-between { justify-content: space-between; }
-        .justify-center { justify-content: center; }
-        .mr-4 { margin-right: 16px; }
-        .mx-auto { margin-left: auto; margin-right: auto; }
-        .p-4 { padding: 16px; }
-        .p-8 { padding: 32px; }
-        .pt-2 { padding-top: 8px; }
-        .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem; }
-        .rounded-lg { border-radius: 0.5rem; }
-        .rounded-xl { border-radius: 0.75rem; }
-        .rounded-3xl { border-radius: 1.5rem; }
-        .bg-slate-900-50 { background-color: rgba(2, 6, 23, 0.5); }
-        .bg-amber-500-10 { background-color: rgba(245, 158, 11, 0.1); }
-        .border-amber-500-50 { border-color: rgba(245, 158, 11, 0.5); }
-        .inline-block { display: inline-block; }
-        .hidden { display: none; }
-        .hover-bg-white-10:hover { background-color: rgba(255, 255, 255, 0.1); }
-        .transition { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
-
-
-        /* =========================================== */
-        /* --- CẤU HÌNH CHO MOBILE (RESPONSIVE) --- */
-        /* =========================================== */
-        @media (max-width: 768px) {
-            
-            /* --- Sửa Menu --- */
-            .nav-menu {
-                position: fixed; /* Chiếm toàn màn hình */
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh; /* Cao 100% */
-                
-                /* Hiệu ứng Glassmorphism cho menu mobile */
-                background: rgba(0, 0, 0, 0.85); /* Đậm hơn */
-                backdrop-filter: blur(25px);
-                -webkit-backdrop-filter: blur(25px);
-                
-                /* Căn giữa các mục menu */
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 30px;
-                
-                /* Ẩn menu đi ban đầu */
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-100%);
-                transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            }
-
-            .nav-menu li a {
-                font-size: 1.5rem; /* Chữ to, dễ bấm */
-                font-weight: 600;
-                color: var(--text-color); /* Màu trắng cho dễ thấy */
-            }
-
-            .mobile-nav-toggle {
-                display: block; /* Hiện nút hamburger */
-            }
-
-            /* --- Trạng thái KHI BẤM NÚT (Active) --- */
-            /* JS sẽ thêm class 'mobile-active' vào <nav> */
-            
-            nav.mobile-active .nav-menu {
-                /* Hiện menu ra */
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-            }
-
-            /* Biến 3 gạch thành dấu "X" */
-            nav.mobile-active .hamburger-bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-            nav.mobile-active .hamburger-bar:nth-child(2) {
-                opacity: 0;
-            }
-            nav.mobile-active .hamburger-bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-
-
-            /* --- Tinh chỉnh các mục khác --- */
-            
-            /* Tắt animation nền để tiết kiệm pin */
-            body::before, body::after {
-                animation: none;
-                filter: blur(100px);
-                opacity: 0.2;
-            }
-            
-            .section {
-                padding: 80px 5%;
-            }
-
-            .glass-card {
-                padding: 25px; /* Giảm padding trên mobile */
-            }
-
-            /* Thu nhỏ chữ cho cân đối */
-            .hero h1 {
-                font-size: 3rem;
-            }
-            .hero h2 {
-                font-size: 1.25rem;
-            }
-            .section-title {
-                font-size: 2.2rem;
-            }
-            .section-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .project-grid {
-                 grid-template-columns: 1fr; /* 1 cột duy nhất */
-            }
-            
-             .faq-question {
-                font-size: 1.1rem;
-                padding: 20px 25px;
-            }
-            
-            /* --- Responsive cho Section Price --- */
-            .price-tabs {
-                flex-wrap: wrap; /* Cho phép tab xuống hàng */
-            }
-            .tab-button {
-                font-size: 0.9rem;
-                padding: 8px 16px;
-            }
-            
-            /* Grid cho price (chuyển về 1 cột) */
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            
-            /* Định nghĩa lại grid cho mobile (cần thiết) */
-            .md-grid-cols-2 { grid-template-columns: 1fr; }
-            .md-grid-cols-3 { grid-template-columns: 1fr; }
-            .lg-grid-cols-4 { grid-template-columns: 1fr; }
-            .lg-grid-cols-6 { grid-template-columns: 1fr; }
-            
-            /* Bắt buộc 2 cột cho tier B1 */
-            #content-b1 .grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            /* Chữ nhỏ hơn */
-            .text-3xl { font-size: 1.5rem; }
-            .text-4xl { font-size: 1.875rem; }
-            
-            /* Ẩn cột "Notes" trên mobile */
-            .md-table-cell {
-                display: none;
-            }
-            .price-table {
-                min-width: 0; /* Tắt min-width */
-            }
-        }
-        
-        /* Cấu hình lại grid cho desktop (phải ghi đè mobile) */
-        @media (min-width: 769px) {
-            .md-grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-            .md-grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (min-width: 1024px) {
-             .lg-grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
-             .lg-grid-cols-6 { grid-template-columns: repeat(6, 1fr); }
-        }
-
+        #mobile-menu { transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out; }
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-yellow-500/40">
 
-    <nav>
-        <div class="nav-content">
-            <a href="#home" class="logo">Banana<span>360media</span></a>
-            
-            <ul class="nav-menu">
-                <li><a href="#why-us">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#price">Price</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                <span class="hamburger-bar"></span>
-                <span class="hamburger-bar"></span>
-                <span class="hamburger-bar"></span>
-            </button>
-            
-        </div>
-    </nav>
-
-    <main>
-
-        <section class="hero section" id="home">
-            <h1>CINEMATIC <span class="gold-text">POST PRODUCTION</span><br>ELEVATING REAL ESTATE</h1>
-            <h2>We transform your raw footage into a high-value commercial work of art.</h2>
-            <a href="mailto:banana360media.st@gmail.com" class="cta-button glass-card">Start Your Project</a>
-        </section>
-        
-        <section class="section" id="why-us">
-            <h3 class="section-title">Why Choose a Dedicated Editor?</h3>
-            <p class="section-subtitle">
-                In a saturated market, focus is power. When 100% of our energy is devoted to post-production, the results exceed expectations.
-            </p>
-            <div class="why-us-grid">
-                <div class="glass-card">
-                    <h4>Maximum Specialization</h4>
-                    <p>We don't spread ourselves thin. We are experts in rhythm, color, sound, and motion. This is the absolute advantage in creating world-class real estate videos.</p>
-                </div>
-                <div class="glass-card">
-                    <h4>Superior Speed</h4>
-                    <p>By focusing on one thing, our workflow is optimized. You get a faster, higher-quality product without the overhead of a large, cumbersome team.</p>
-                </div>
-                <div class="glass-card">
-                    <h4>An Artistic Eye</h4>
-                    <p>We understand what makes a property desirable. We know how to use post-production to celebrate architecture, light, and create that "must-have" feeling for viewers.</p>
-                </div>
-            </div>
-        </section>
-
-
-        <section class="section" id="services">
-            <h3 class="section-title">Comprehensive Services</h3>
-            <p class="section-subtitle">
-                You provide the footage, we handle the rest.
-            </p>
-            <div class="features-grid">
-                <div class="glass-card">
-                    <h4><span class="icon">🎨</span>Cinematic Color Grading</h4>
-                    <p>Professional color grading to create a luxurious, cozy, or modern atmosphere. Turn dull daytime shots into a brilliant golden-hour showcase.</p>
-                </div>
-                <div class="glass-card">
-                    <h4><span class="icon">✨</span>Motion Graphics & Tracking</h4>
-                    <p>Add sleek 3D callouts that track motion, intuitively highlighting amenities, premium materials, and specifications.</p>
-                </div>
-                <div class="glass-card">
-                    <h4><span class="icon">🎵</span>Sound Design</h4>
-                    <p>Noise removal, adding foley (doors closing, wind...), and expert selection/mixing of music to build emotion and create a powerful climax.</p>
-                </div>
-                <div class="glass-card">
-                    <h4><span class="icon">✂️</span>Creative Editing</h4>
-                    <p>More than just cuts. We tell a story. We create a compelling rhythm, seamless transitions, and keep viewers hooked until the very end.</p>
-                </div>
-                 <div class="glass-card">
-                    <h4><span class="icon"> stabilized</span>Stabilization & Smoothing</h4>
-                    <p>We process shaky footage (even handheld) to be as smooth as a professional Gimbal shot, delivering a premium viewing experience.</p>
-                </div>
-                 <div class="glass-card">
-                    <h4><span class="icon">📱</span>Multi-Platform Optimization</h4>
-                    <p>Export final videos in multiple aspect ratios: 16:9 (YouTube), 9:16 (TikTok/Reels), 1:1 (Facebook/Instagram) to maximize your campaign's reach.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section" id="process">
-            <h3 class="section-title">Our 4-Step Streamlined Process</h3>
-            <p class="section-subtitle">Transparent. Efficient. Uncomplicated.</p>
-            <div class="process-steps">
-                <div class="process-step glass-card">
-                    <div class="step-number">01</div>
-                    <h4>Receive & Analyze</h4>
-                    <p>You send your raw footage (Google Drive, Dropbox...) and creative brief. We analyze the files and confirm the desired style and requirements.</p>
-                </div>
-                <div class="process-step glass-card">
-                    <div class="step-number">02</div>
-                    <h4>First Cut</h4>
-                    <p>We deliver the first assembly, focusing on the story, pacing, and music for your initial review.</p>
-                </div>
-                <div class="process-step glass-card">
-                    <div class="step-number">03</div>
-                    <h4>Refine & Perfect</h4>
-                    <p>We implement your feedback, then proceed with color grading, effects, sound mixing, and final polishing.</p>
-                </div>
-                <div class="process-step glass-card">
-                    <div class="step-number">04</div>
-                    <h4>Deliver Final Product</h4>
-                    <p>You receive the final 4K (or custom resolution) video file, ready to captivate your clients.</p>
-                </div>
-            </div>
-        </section>
+    <div class="space-bg"></div>
+    <div class="stars-container"></div>
+    <div class="shooting-star" style="transform: rotate(45deg);"></div>
+    <div class="shooting-star" style="transform: rotate(30deg);"></div>
+    <div class="shooting-star" style="transform: rotate(60deg);"></div>
+    <div class="shooting-star" style="transform: rotate(40deg);"></div>
     
-        <section class="section" id="price">
-            <h3 class="section-title text-glass">Video Editing Service Pricing</h3>
-            <p class="section-subtitle">
-                Pricing Formula: 
-                <span class="font-bold text-white text-2xl tracking-wide">
-                    A + ( B1 <span style="color: var(--gold-color);">or</span> B2 ) + C
-                </span>
-            </p>
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+
+    <header class="fixed w-full z-50 glass-card no-hover-jump border-x-0 border-t-0 rounded-none">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="text-2xl font-bold tracking-widest text-white flex items-center gap-2 uppercase">
+                <i class="fas fa-satellite-dish text-yellow-400"></i>
+                Banana 360<span class="text-yellow-400 font-light text-neon">Media</span>
+            </div>
             
-            <div class="text-center mb-16">
-                <div class="glass-card inline-block p-4" style="font-size: 1.25rem; font-weight: 500; border-color: rgba(255, 215, 0, 0.5);">
-                    Turnaround Time: <span class="font-bold" style="color: var(--gold-color);">8 - 24 Hours</span>
-                </div>
-            </div>
-
-            <section class="mb-16 text-left">
-                <h2 class="text-3xl font-bold text-glass mb-8 border-b border-gold-30 pb-4 flex items-center" style="color: var(--gold-color);">
-                    <i data-lucide="dollar-sign" class="w-8 h-8 mr-4" style="color: var(--gold-color);"></i>
-                    A. BASE PRICE
-                </h2>
-                <div class="grid md-grid-cols-2 gap-8">
-                    <div class="glass-card p-8">
-                        <h3 class="text-xl font-semibold text-white mb-4">Pricing by Video Length</h3>
-                        <ul class="space-y-4">
-                            <li class="flex justify-between items-center text-lg p-3 rounded-lg hover-bg-white-10 transition">
-                                <span>Video under 30 seconds:</span>
-                                <span class="font-bold text-red-400">30 USD/video</span>
-                            </li>
-                            <li class="flex justify-between items-center text-lg p-3 rounded-lg hover-bg-white-10 transition">
-                                <span>Video 30s - 1 minute:</span>
-                                <span class="font-bold text-red-400">35 USD/video</span>
-                            </li>
-                            <li class="flex justify-between items-center text-lg bg-amber-500-10 p-4 rounded-lg border border-amber-500-50">
-                                <span>Over 1 minute:</span>
-                                <span class="font-bold text-yellow-300">35 USD + 15 USD/add. min</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="glass-card p-8">
-                        <h3 class="text-xl font-semibold text-white mb-4">Advanced Services</h3>
-                        <div class="flex justify-between items-center text-lg border-b pb-4 mb-4" style="border-color: rgba(255, 255, 255, 0.1);">
-                            <span>Agent, 3D Text, Caption:</span>
-                            <span class="font-bold text-red-400">45 USD/video</span>
-                        </div>
-                        <p class="text-sm text-slate-400 italic pt-2">
-                            * Details for special effects are in Section D. Please send a sample for an accurate quote.
-                        </p>
-                    </div>
-                </div>
-            </section>
-            
-            <section class="mb-16 text-left">
-                <h2 class="text-3xl font-bold text-glass mb-8 border-b border-gold-30 pb-4 flex items-center" style="color: var(--gold-color);">
-                    <i data-lucide="layers" class="w-8 h-8 mr-4" style="color: var(--gold-color);"></i>
-                    B. INPUT SURCHARGE
-                </h2>
-                
-                <div class="price-tabs" role="tablist">
-                    <button id="tab-b1" onclick="showTab('b1')" class="tab-button tab-active">
-                        By NUMBER of Files
-                    </button>
-                    <button id="tab-b2" onclick="showTab('b2')" class="tab-button tab-inactive">
-                        By TOTAL DURATION
-                    </button>
-                </div>
-
-                <div id="content-b1" class="tab-content glass-card p-8">
-                    <h3 class="text-xl font-semibold text-yellow-300 mb-6 text-center">B1. Surcharge by NUMBER of Input Files</h3>
-                    <div class="grid lg-grid-cols-6 gap-6">
-                        <div class="text-center p-4 glass-card rounded-xl">
-                            <p class="text-sm text-slate-400">Tier 1</p>
-                            <p class="font-bold mb-1 text-green-400">1-70 Files</p>
-                            <div class="text-3xl font-extrabold text-white">0$</div>
-                        </div>
-                        <div class="text-center p-4 glass-card rounded-xl">
-                            <p class="text-sm text-slate-400">Tier 2</p>
-                            <p class="font-bold mb-1 text-yellow-300">>70-100</p>
-                            <div class="text-3xl font-extrabold text-white">5$</div>
-                        </div>
-                        <div class="text-center p-4 glass-card rounded-xl">
-                            <p class="text-sm text-slate-400">Tier 3</p>
-                            <p class="font-bold mb-1 text-orange-300">100-150</p>
-                            <div class="text-3xl font-extrabold text-white">15$</div>
-                        </div>
-                        <div class="text-center p-4 glass-card rounded-xl">
-                            <p class="text-sm text-slate-400">Tier 4</p>
-                            <p class="font-bold mb-1 text-red-400">150-200</p>
-                            <div class="text-3xl font-extrabold text-white">25$</div>
-                        </div>
-                        <div class="text-center p-4 glass-card rounded-xl">
-                            <p class="text-sm text-slate-400">Tier 5</p>
-                            <p class="font-bold mb-1 text-purple-400">200-300</p>
-                            <div class="text-3xl font-extrabold text-white">35$</div>
-                        </div>
-                        <div class="text-center p-4 glass-card rounded-xl">
-                            <p class="text-sm text-slate-400">Max Tier</p>
-                            <p class="font-bold mb-1 text-pink-400">>300</p>
-                            <div class="text-3xl font-extrabold text-white">50$</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="content-b2" class="tab-content glass-card p-8">
-                     <h3 class="text-xl font-semibold text-yellow-300 mb-6 text-center">B2. Surcharge by TOTAL Input Duration</h3>
-                    <div class="grid lg-grid-cols-4 gap-6">
-                        <div class="glass-card text-center p-4 rounded-xl">
-                            <i data-lucide="clock" class="w-8 h-8 mx-auto mb-3 text-green-400"></i>
-                            <p class="font-bold text-green-300">Under 15 minutes</p>
-                            <div class="text-4xl font-extrabold text-white mt-2">0$</div>
-                        </div>
-                         <div class="text-center p-4 glass-card rounded-xl">
-                            <i data-lucide="timer" class="w-8 h-8 mx-auto mb-3 text-yellow-300"></i>
-                            <p class="font-bold text-yellow-300">15 - 60 minutes</p>
-                            <div class="text-4xl font-extrabold text-white mt-2">10-20$</div>
-                        </div>
-                         <div class="text-center p-4 glass-card rounded-xl">
-                            <i data-lucide="fast-forward" class="w-8 h-8 mx-auto mb-3 text-orange-300"></i>
-                            <p class="font-bold text-orange-300">1.5 - 2 hours</p>
-                            <div class="text-4xl font-extrabold text-white mt-2">30$</div>
-                        </div>
-                         <div class="text-center p-4 glass-card rounded-xl">
-                            <i data-lucide="hourglass" class="w-8 h-8 mx-auto mb-3 text-red-400"></i>
-                            <p class="font-bold text-red-300">Over 3 hours</p>
-                            <div class="text-4xl font-extrabold text-white mt-2">45$</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="mb-16 text-left">
-                <h2 class="text-3xl font-bold text-glass mb-8 border-b border-gold-30 pb-4 flex items-center" style="color: var(--gold-color);">
-                    <i data-lucide="hard-drive" class="w-8 h-8 mr-4" style="color: var(--gold-color);"></i>
-                    C. FILE SIZE SURCHARGE
-                </h2>
-                <div class="grid lg-grid-cols-4 gap-6">
-                     <div class="glass-card text-center p-8">
-                        <i data-lucide="folder" class="w-10 h-10 mx-auto mb-4 text-green-400"></i>
-                        <p class="text-lg font-bold mb-1 text-green-300">Under 50GB</p>
-                        <div class="text-3xl font-extrabold text-white mt-3">0$</div>
-                    </div>
-                     <div class="glass-card text-center p-8">
-                        <i data-lucide="folder-open" class="w-10 h-10 mx-auto mb-4 text-yellow-300"></i>
-                        <p class="text-lg font-bold mb-1 text-yellow-300">Over 50GB</p>
-                        <div class="text-3xl font-extrabold text-white mt-3">10$</div>
-                    </div>
-                    <div class="glass-card text-center p-8">
-                        <i data-lucide="database" class="w-10 h-10 mx-auto mb-4 text-orange-300"></i>
-                        <p class="text-lg font-bold mb-1 text-orange-300">Over 70GB</p>
-                        <div class="text-3xl font-extrabold text-white mt-3">15$</div>
-                    </div>
-                    <div class="glass-card text-center p-8">
-                        <i data-lucide="server" class="w-10 h-10 mx-auto mb-4 text-red-400"></i>
-                        <p class="text-lg font-bold mb-1 text-red-300">Over 100GB</p>
-                        <div class="text-3xl font-extrabold text-white mt-3">20$</div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="mb-12 text-left">
-                <h2 class="text-3xl font-bold text-glass mb-8 border-b border-gold-30 pb-4 flex items-center" style="color: var(--gold-color);">
-                    <i data-lucide="sparkles" class="w-8 h-8 mr-4" style="color: var(--gold-color);"></i>
-                    D. SPECIAL EFFECTS PRICING
-                </h2>
-                <div class="scrollable-table glass-card" style="padding: 10px;">
-                    <table class="price-table">
-                        <thead>
-                            <tr>
-                                <th>Effect</th>
-                                <th>Description</th>
-                                <th class="text-center">Cost (USD)</th>
-                                <th class="md-table-cell">Notes</th>
-                                <th class="text-center">Sample</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="font-medium">Masking</td>
-                                <td>Technique to mask/reveal parts of a video, create transitions, or composite images.</td>
-                                <td class="text-center"><span style="background-color: rgba(34, 197, 94, 0.2); color: #86efac; font-weight: 700; padding: 4px 12px; border-radius: 9999px;">Free</span></td>
-                                <td class="text-slate-400 md-table-cell">Free for one-time use</td>
-                                <td class="text-center"><a href="https://www.dropbox.com/scl/fo/rjywnrfjp5hgx1xnoxxb7/ALYFAc7Y9rEwj4QCS0Vo_as?rlkey=topd0mrrnr4qe6erf4s9skopy&dl=0" target="_blank" class="text-cyan-400">Link</a></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Drop house</td>
-                                <td>Effect where a house appears to drop from the sky.</td>
-                                <td class="text-center"><span style="background-color: rgba(34, 197, 94, 0.2); color: #86efac; font-weight: 700; padding: 4px 12px; border-radius: 9999px;">Free</span></td>
-                                <td class="text-slate-400 md-table-cell">Free for one-time use</td>
-                                <td class="text-center"><a href="https://www.dropbox.com/scl/fo/gkcc1m20lo6qk8yxs2ayi/AOdxPVhRlgXRWHVj-hynsBk?rlkey=cnri4aqyxk65tz5fheuk4x36v&dl=0" target="_blank" class="text-cyan-400">Link</a></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Day to night</td>
-                                <td>Transition footage from day to night and vice versa.</td>
-                                <td class="text-center"><span style="background-color: rgba(34, 197, 94, 0.2); color: #86efac; font-weight: 700; padding: 4px 12px; border-radius: 9999px;">Free</span></td>
-                                <td class="text-slate-400 md-table-cell"></td>
-                                <td class="text-center"><a href="https://www.dropbox.com/scl/fo/srjb4mvrucodrg57amjzw/APLFOQ5VFhbGAhDKgGqaYZw?rlkey=xran4h81bznyxg2iylsuosgrj&dl=0" target="_blank" class="text-cyan-400">Link</a></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Zoom earth</td>
-                                <td>Fast zoom effect from space down to a location on Earth.</td>
-                                <td class="text-center"><span style="background-color: rgba(34, 197, 94, 0.2); color: #86efac; font-weight: 700; padding: 4px 12px; border-radius: 9999px;">Free</span></td>
-                                <td class="text-slate-400 md-table-cell">Free for one-time use</td>
-                                <td class="text-center"><a href="https://www.dropbox.com/scl/fo/w8g8m3om3ivzczgg9ie7l/ABeHVXtmCMQwZQXoLTpOyH0?rlkey=8zafnu36hd8qo27ovol8zk0os&dl=0" target="_blank" class="text-cyan-400">Link</a></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Cut out (3-5 layer)</td>
-                                <td>Isolate a subject from its background or remove parts of an image/video.</td>
-                                <td class="text-center"><span style="background-color: rgba(34, 197, 94, 0.2); color: #86efac; font-weight: 700; padding: 4px 12px; border-radius: 9999px;">Free</span></td>
-                                <td class="text-slate-400 md-table-cell">Free for one-time use</td>
-                                <td class="text-center"><a href="https://www.dropbox.com/scl/fo/5nizivqpt7i0msj6lok6s/ADci7PGQNqNPH41S85d-4n4?rlkey=rjkuj470wpqw0g2p4cbebaky9&dl=0" target="_blank" class="text-cyan-400">Link</a></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Roto</td>
-                                <td>Frame-by-frame subject tracking to remove/replace backgrounds or add effects.</td>
-                                <td class="text-center"><span style="background-color: rgba(34, 197, 94, 0.2); color: #86efac; font-weight: 700; padding: 4px 12px; border-radius: 9999px;">Free</span></td>
-                                <td class="text-slate-400 md-table-cell"></td>
-                                <td class="text-center"><a href="https://www.dropbox.com/scl/fo/11prfsfhdbm72luzyx0zu/AHDokT0xBfScp037aC-s2qU?rlkey=rxn0g52qu8jo35kvu85lps0wu&dl=0" target="_blank" class="text-cyan-400">Link</a></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">3D Text</td>
-                                <td>Create 3D text to emphasize ideas and grab attention.</td>
-                                <td class="text-center"><span style="background-color: rgba(34, 197, 94, 0.2); color: #86efac; font-weight: 700; padding: 4px 12px; border-radius: 9999px;">Free*</span></td>
-                                <td class="text-slate-400 md-table-cell">*Charged when combined with Agent.</td>
-                                <td class="text-center"><a href="https://www.dropbox.com/scl/fo/ikbybsmm8y3o410gejji0/ABDTqnGFFB2CUItHluxqimk?rlkey=ddyzb23e8a58y8vj54dmvpwii&dl=0" target="_blank" class="text-cyan-400">Link</a></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Text Animation</td>
-                                <td>Animated text for an Agent's dialogue to create engagement.</td>
-                                <td class="text-center"><span style="background-color: rgba(34, 197, 94, 0.2); color: #86efac; font-weight: 700; padding: 4px 12px; border-radius: 9999px;">Free*</span></td>
-                                <td class="text-slate-400 md-table-cell">*Charged when combined with Agent.</td>
-                                <td class="text-center"><a href="https://www.dropbox.com/scl/fo/mzpeee1vs4bj2nd9b7d8y/ACdPM2p3Ka_LW02p6hQj-8k?rlkey=6qlgl9cvq8gf0h14bljyyweko&dl=0" target="_blank" class="text-cyan-400">Link</a></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Luma Glow</td>
-                                <td>Glowing effect that highlights objects, creating a unique look.</td>
-                                <td class="text-center"><span style="background-color: rgba(34, 197, 94, 0.2); color: #86efac; font-weight: 700; padding: 4px 12px; border-radius: 9999px;">Free</span></td>
-                                <td class="text-slate-400 md-table-cell"></td>
-                                <td class="text-center"><a href="https://www.dropbox.com/scl/fo/5b7xuqr1lo2fqdewwc2ui/AM-V161Ev5z31UsifbjJxt8?rlkey=1y429v7ktdqnvfmog8lzjscyi&dl=0" target="_blank" class="text-cyan-400">Link</a></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Forward effect</td>
-                                <td>Fast-paced transition effects to captivate viewers.</td>
-                                <td class="text-center"><span style="background-color: rgba(34, 197, 94, 0.2); color: #86efac; font-weight: 700; padding: 4px 12px; border-radius: 9999px;">Free</span></td>
-                                <td class="text-slate-400 md-table-cell"></td>
-                                <td class="text-center"><a href="https://www.dropbox.com/scl/fo/iodo547x77rxm69pif3ox/ADo2A_T27GYykscUGKjyyw0?rlkey=z44f0ygt2t8y02aocujp5595l&dl=0" target="_blank" class="text-cyan-400">Link</a></td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Border line</td>
-                                <td>Draw boundary lines to mark a property's location.</td>
-                                <td class="text-center"><span style="background-color: rgba(34, 197, 94, 0.2); color: #86efac; font-weight: 700; padding: 4px 12px; border-radius: 9999px;">Free</span></td>
-                                <td class="text-slate-400 md-table-cell">Free for one-time use</td>
-                                <td class="text-center"><a href="https://www.dropbox.com/scl/fo/x1b6yqh5i6wnk0r8j6xzr/ADI3Sg_HwRxsg_ubzvEvVo8?rlkey=5x6qxcmg9o58ud916tag5wktf&dl=0" target="_blank" class="text-cyan-400">Link</a></td>
-                            </tr>
-                             <tr style="border-bottom: none;">
-                                <td class="font-medium">AI Effect (Interior)</td>
-                                <td>AI-powered effect to furnish/unfurnish an empty room.</td>
-                                <td class="text-center"><span style="background-color: rgba(239, 68, 68, 0.2); color: #fca5a5; font-weight: 700; padding: 4px 12px; border-radius: 9999px;">15$</span></td>
-                                <td class="text-slate-400 md-table-cell"></td>
-                                <td class="text-center"><a href="https://www.dropbox.com/scl/fo/thp06mreohmsgtp8s8aqx/AIzA5PQ2dFfbR_LlTxUSJ9w?rlkey=k495fndbhqmh84cr77w4uqyyb&dl=0" target="_blank" class="text-cyan-400">Link</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-        </section>
-
-        <section class="section" id="projects">
-            <h3 class="section-title">Featured Projects</h3>
-            <p class="section-subtitle">Our quality speaks for itself. Here's what we do with our clients' raw footage.</p>
-            
-            <div class="project-grid">
-                <a href="https://www.instagram.com/p/DP_mqgmE77V/" class="project-card" target="_blank">
-                    <div class="project-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80');">
-                    </div>
-                    <div class="project-info">
-                        <h4>VinHomes Riverside Villa Project</h4>
-                        <p>Services: Editing, Color Grading, Motion Graphics</p>
-                    </div>
-                </a>
-                
-                <a href="https://www.instagram.com/p/DPxQYVCE2CX/" class="project-card" target="_blank">
-                    <div class="project-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=80');">
-                    </div>
-                    <div class="project-info">
-                        <h4>The Marq Luxury Apartment (D1)</h4>
-                        <p>Services: Reels Editing, 9:16 Optimization, Color</p>
-                    </div>
-                </a>
-                
-                <a href="https://www.instagram.com/p/DP2cXQqk0IY/" class="project-card" target="_blank">
-                    <div class="project-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=80');">
-                    </div>
-                    <div class="project-info">
-                        <h4>Modern Townhouse</h4>
-                        <p>Services: Walkthrough Edit, Sound Design</p>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <section class="section" id="testimonials">
-            <h3 class="section-title">What Our Clients Say</h3>
-            <p class="section-subtitle">Our partners' satisfaction is the true measure of our success.</p>
-            <div class="testimonial-grid">
-                <div class="testimonial-card glass-card">
-                    <p class="quote">"Truly impressive. Banana360media turned my messy footage into a smooth and luxurious villa tour. Their response and revision speed is fantastic."</p>
-                    <div class="author">
-                        Michael Chen
-                        <span>Head of Marketing, Apex Realty</span>
-                    </div>
-                </div>
-                <div class="testimonial-card glass-card">
-                    <p class="quote">"Your color grading skills are top-notch. The video looks so much more 'cinematic' and expensive after Banana360media worked on it. A definite long-term partner."</p>
-                    <div class="author">
-                        Sarah Jenkins
-                        <span>Freelance Real Estate Videographer</span>
-                    </div>
-                </div>
-                 <div class="testimonial-card glass-card">
-                    <p class="quote">"I especially love the motion-tracked callouts. It highlights the apartment's amenities in a very professional way. Worth every penny."</p>
-                    <div class="author">
-                        David Lee
-                        <span>Sales Team Leader, Luxe Properties Group</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="faq">
-            <h3 class="section-title">Frequently Asked Questions</h3>
-            <p class="section-subtitle">Things you might wonder about before we start.</p>
-            <div class="faq-container">
-                <div class="faq-item glass-card">
-                    <button class="faq-question">How do I send you the files?</button>
-                    <div class="faq-answer">
-                        <p>It's simple! Just upload all your raw footage to a cloud service like Google Drive, Dropbox, or WeTransfer and share the access link with us.</p>
-                    </div>
-                </div>
-                <div class="faq-item glass-card">
-                    <button class="faq-question">What is the turnaround time for a video?</button>
-                    <div class="faq-answer">
-                        <p>It depends on the complexity and length. Typically, a 2-3 minute real estate tour video takes 2-3 business days for the first cut. Reels/TikTok videos (under 1 minute) can often be completed within 24 hours.</p>
-                    </div>
-                </div>
-                <div class="faq-item glass-card">
-                    <button class="faq-question">Do I get to request revisions?</button>
-                    <div class="faq-answer">
-                        <p>Absolutely. Our service packages typically include 2-3 rounds of free revisions. We will work with you until you are completely satisfied with the final product.</p>
-                    </div>
-                </div>
-                 <div class="faq-item glass-card">
-                    <button class="faq-question">How does your pricing work?</button>
-                    <div class="faq-answer">
-                        <p>We offer flexible pricing tailored to each project. Most projects are priced at a flat rate based on the amount of raw footage, the desired video length, and the complexity of the edit (e.g., motion graphics, advanced color grading). Contact us for a custom quote!</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer id="contact">
-        <h3>Start Your Project</h3>
-        <p class="section-subtitle">Send us your footage and watch the magic happen.</p>
-        
-        <div class="social-icons">
- 
-            <a href="mailto:banana360media.st@gmail.com" aria-label="Email">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
-                </svg>
+            <nav class="hidden lg:flex space-x-10 text-sm font-semibold tracking-wider text-slate-300 uppercase">
+                <a href="#philosophy" class="hover:text-yellow-400 transition">Our Approach</a>
+                <a href="#services" class="hover:text-yellow-400 transition">Services</a>
+                <a href="#workflow" class="hover:text-yellow-400 transition">System</a>
+                <a href="#pricing" class="hover:text-yellow-400 transition">Pricing</a>
+            </nav>
+            <a href="#onboarding" class="hidden md:inline-flex bg-yellow-500/20 text-yellow-400 border border-yellow-400 px-6 py-2.5 rounded text-sm font-bold tracking-widest hover:bg-yellow-500 hover:text-black transition shadow-[0_0_15px_rgba(250,204,21,0.3)] uppercase">
+                Initialize <i class="fas fa-power-off ml-2"></i>
             </a>
 
-            <a href="https://www.instagram.com/banana360.media/" target="_blank" aria-label="Instagram">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
-            </a>
-
-            <a href="https://www.youtube.com/@Banana360Media" target="_blank" aria-label="YouTube">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 42.276 48.284 48.597C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.322 42.003-24.947 48.284-48.597 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zM232.615 355.732l-0.072-192.265L390.592 256 232.615 355.732z"/></svg>
-            </a>            
+            <button id="menu-btn" class="lg:hidden text-yellow-400 hover:text-white focus:outline-none text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-        
-        <div class="copyright"><a href="mailto:banana360media.st@gmail.com" class="cta-button glass-card">Get a Quote</a></divd>
-        <p class="copyright">
-            © 2025 Banana360media. All rights reserved.
-        </p>
+
+        <div id="mobile-menu" class="lg:hidden max-h-0 opacity-0 overflow-hidden bg-[#030014]/90 backdrop-blur-xl border-b border-yellow-500/30">
+            <div class="px-6 py-4 flex flex-col space-y-4 font-mono text-sm tracking-widest text-center uppercase">
+                <a href="#philosophy" class="mobile-link text-slate-300 hover:text-yellow-400 border-b border-slate-800 pb-2">Our Approach</a>
+                <a href="#services" class="mobile-link text-slate-300 hover:text-yellow-400 border-b border-slate-800 pb-2">Services</a>
+                <a href="#workflow" class="mobile-link text-slate-300 hover:text-yellow-400 border-b border-slate-800 pb-2">System</a>
+                <a href="#pricing" class="mobile-link text-slate-300 hover:text-yellow-400 border-b border-slate-800 pb-2">Pricing</a>
+                <a href="#onboarding" class="mobile-link text-yellow-400 font-bold mt-2 pt-2">Initialize <i class="fas fa-power-off ml-2"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="pt-40 pb-20 px-6 relative z-10">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-yellow-500/30 bg-yellow-900/20 text-yellow-400 text-xs font-bold uppercase tracking-widest mb-10 shadow-[0_0_20px_rgba(250,204,21,0.1)]">
+                <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
+                System Online | US Real Estate Media Partner
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 text-white tracking-tight uppercase">
+                Scale Your Media Business <br>
+                Through a <span class="text-gradient">Futuristic Post-System</span>.
+            </h1>
+            <p class="text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+                As your project volume grows, you need an infrastructure that scales. We provide consistent, secure, and hyper-precise real estate video editing solutions.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#onboarding" class="btn-sci-fi bg-yellow-500/10 text-yellow-400 px-8 py-4 rounded font-bold text-lg hover:bg-yellow-500 hover:text-slate-900 transition-all uppercase tracking-widest flex items-center justify-center gap-3">
+                    Deploy Trial Edit <i class="fas fa-rocket"></i>
+                </a>
+                <a href="#pricing" class="glass-card text-white px-8 py-4 rounded font-bold text-lg hover:border-yellow-400 transition-all flex items-center justify-center gap-2 uppercase tracking-widest">
+                    View Pricing
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="philosophy" class="py-24 relative z-10 border-t border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-sm font-bold text-yellow-600 uppercase tracking-widest mb-3">System Architecture</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight uppercase">Escape the Gravity of Endless Editing.</h3>
+                    <p class="text-slate-400 text-lg leading-relaxed mb-6">
+                        We understand the loop: shooting properties by day, grinding in Adobe Premiere by night. As your client base expands, editing time consumes your capacity to secure new missions.
+                    </p>
+                    <p class="text-slate-400 text-lg leading-relaxed">
+                        Banana 360 Media is your operational control center. We offer a highly organized <strong>Back-office System</strong>, allowing you to completely offload post-production and focus on navigating your business forward.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="glass-card p-8 rounded-xl">
+                        <i class="fas fa-fingerprint text-3xl text-yellow-400 mb-4 text-neon"></i>
+                        <h4 class="text-xl font-bold text-white mb-2 uppercase">Consistency Code</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">We lock in dedicated Brand Guidelines for each studio. Every render carries your exact visual DNA.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-xl">
+                        <i class="fas fa-tachometer-alt text-3xl text-orange-400 mb-4"></i>
+                        <h4 class="text-xl font-bold text-white mb-2 uppercase">Light-Speed</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Strict 8-24 hour turnaround cycles, driven by an intelligent internal processing matrix.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-xl sm:col-span-2">
+                        <i class="fas fa-lock text-3xl text-yellow-400 mb-4 text-neon"></i>
+                        <h4 class="text-xl font-bold text-white mb-2 uppercase">Vault Security</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Your RAW footage is classified. We enforce strict NDA protocols and automatically purge data post-delivery.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 relative z-10 border-y border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-sm font-bold text-yellow-400 uppercase tracking-widest mb-3 text-neon">Modules</h2>
+                <h3 class="text-3xl md:text-5xl font-bold text-white mb-4 uppercase">Real Estate Solutions</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <div class="glass-card p-8 rounded-xl flex flex-col h-full">
+                    <h4 class="text-2xl font-bold text-white mb-4 uppercase text-yellow-400">Cinematic Tours</h4>
+                    <p class="text-slate-400 text-sm mb-6 flex-grow">Engineered for luxury listings. High-fidelity visual emotion and flawless pacing.</p>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start gap-3"><i class="fas fa-bolt text-yellow-500 mt-1"></i> Advanced Color Grading</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-bolt text-yellow-500 mt-1"></i> Fluid Speed Ramps</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-bolt text-yellow-500 mt-1"></i> Spatial Sound Design</li>
+                    </ul>
+                </div>
+                <div class="glass-card p-8 rounded-xl flex flex-col h-full">
+                    <h4 class="text-2xl font-bold text-white mb-4 uppercase text-yellow-400">Agent Branding</h4>
+                    <p class="text-slate-400 text-sm mb-6 flex-grow">Broadcast-grade agent intros and interviews to establish market authority.</p>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start gap-3"><i class="fas fa-bolt text-yellow-500 mt-1"></i> Multi-cam Syncing</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-bolt text-yellow-500 mt-1"></i> Audio Sweetening</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-bolt text-yellow-500 mt-1"></i> Motion Graphics Integration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="workflow" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-16 items-center">
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-sm font-bold text-yellow-400 uppercase tracking-widest mb-3 text-neon">Operational Matrix</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6 uppercase">A Frictionless <br>Command Center.</h3>
+                    <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+                        Our core advantage isn't just software—it's the <strong>Automated Workflow</strong> built to ensure zero data drops and absolute precision.
+                    </p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-sm bg-yellow-900/40 flex items-center justify-center text-yellow-400 font-bold shrink-0 border border-yellow-500/50 shadow-[0_0_10px_rgba(250,204,21,0.2)]">01</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2 uppercase">Data Uplink</h4>
+                                <p class="text-slate-400 text-sm">Transmit footage links (Drive/Dropbox) along with specific mission parameters via Email.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-sm bg-orange-900/40 flex items-center justify-center text-orange-400 font-bold shrink-0 border border-orange-500/50 shadow-[0_0_10px_rgba(251,146,60,0.2)]">02</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2 uppercase">Processing & QA</h4>
+                                <p class="text-slate-400 text-sm">Footage enters our rendering pipeline. Outputs undergo rigorous internal Quality Assurance before transmission.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-sm bg-yellow-900/40 flex items-center justify-center text-yellow-400 font-bold shrink-0 border border-yellow-500/50 shadow-[0_0_10px_rgba(250,204,21,0.2)]">03</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2 uppercase">Final Telemetry</h4>
+                                <p class="text-slate-400 text-sm">Receive 4K Final renders optimized for immediate deployment across all platforms.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="glass-card p-6 rounded-xl relative">
+                        <div class="flex items-center gap-2 mb-4 border-b border-slate-700/50 pb-4">
+                            <div class="w-3 h-3 rounded-full bg-slate-600"></div>
+                            <div class="w-3 h-3 rounded-full bg-slate-600"></div>
+                            <div class="w-3 h-3 rounded-full bg-slate-600"></div>
+                            <div class="ml-4 text-xs font-mono text-yellow-400 tracking-widest uppercase text-neon">System_Terminal_Active</div>
+                        </div>
+                        <div class="space-y-4 font-mono">
+                            <div class="h-12 bg-black/40 rounded flex items-center px-4 justify-between border border-slate-800">
+                                <div class="flex gap-3 items-center"><i class="fas fa-satellite text-yellow-400 animate-pulse"></i> <span class="text-sm text-slate-300">REQ_123_MainSt.prproj</span></div>
+                                <span class="text-xs px-2 py-1 border border-green-500/50 text-green-400 rounded bg-green-900/20">QA_PASSED</span>
+                            </div>
+                             <div class="h-12 bg-black/40 rounded flex items-center px-4 justify-between border border-slate-800">
+                                <div class="flex gap-3 items-center"><i class="fas fa-hdd text-slate-500"></i> <span class="text-sm text-slate-400">DATA_Smith_Interview</span></div>
+                                <span class="text-xs px-2 py-1 border border-slate-600 text-slate-400 rounded">AWAITING_INPUT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 relative z-10 border-t border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-sm font-bold text-yellow-400 uppercase tracking-widest mb-3 text-neon">Investment Logs</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4 uppercase">Fair Value. Infinite Scaling.</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start max-w-5xl mx-auto">
+                
+                <div class="glass-card p-8 rounded-xl flex flex-col h-full">
+                    <h4 class="text-2xl font-bold text-white mb-2 uppercase">PRIME Listing</h4>
+                    <p class="text-slate-400 text-sm mb-6 h-10">Standard residential listings.</p>
+                    <div class="mb-8 border-b border-slate-700/50 pb-6">
+                        <span class="text-4xl font-extrabold text-white">$45</span>
+                        <span class="text-slate-500 font-mono text-sm"> / VIDEO</span>
+                    </div>
+                    <ul class="space-y-4 text-sm text-slate-300 mb-8 flex-grow">
+                        <li class="flex items-start gap-3"><i class="fas fa-caret-right text-yellow-500 mt-1"></i> Basic Edit (under 90s)</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-caret-right text-yellow-500 mt-1"></i> Speed Ramps</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-caret-right text-yellow-500 mt-1"></i> Stabilization</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-caret-right text-yellow-500 mt-1"></i> Standard Color Correction</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-caret-right text-yellow-500 mt-1"></i> Trending Audio selection</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-caret-right text-yellow-500 mt-1"></i> Basic Logo/Info Sync</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-8 rounded-xl border border-yellow-400/60 relative transform md:-translate-y-4 shadow-[0_0_40px_rgba(250,204,21,0.15)] flex flex-col h-full bg-yellow-900/10">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-slate-900 text-xs py-1.5 px-4 rounded font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(250,204,21,0.5)]">
+                        Optimal Choice
+                    </div>
+                    <h4 class="text-2xl font-bold text-yellow-400 text-neon mb-2 uppercase">LUXURY Showcase</h4>
+                    <p class="text-slate-400 text-sm mb-6 h-10">Million-dollar homes demanding high-end visual physics.</p>
+                    <div class="mb-8 border-b border-yellow-500/30 pb-6">
+                        <span class="text-4xl font-extrabold text-white">$60</span>
+                        <span class="text-slate-500 font-mono text-sm"> / VIDEO</span>
+                    </div>
+                    <ul class="space-y-4 text-sm text-slate-300 mb-8 flex-grow">
+                        <li class="flex items-start gap-3 font-semibold text-white"><i class="fas fa-plus text-yellow-400 mt-1 text-neon"></i> Includes PRIME Listing</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-caret-right text-orange-500 mt-1"></i> Advanced Color Grading</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-caret-right text-orange-500 mt-1"></i> Speed Ramps & Smooth Transitions</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-caret-right text-orange-500 mt-1"></i> Ambient Sound Design</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-caret-right text-orange-500 mt-1"></i> Free Drop house, Sky Replacements...</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="mt-8 glass-card p-6 md:p-8 rounded-xl font-mono max-w-5xl mx-auto">
+                <h4 class="text-lg font-bold text-yellow-400 mb-6 uppercase tracking-widest text-neon">> Optional_Upgrades</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-slate-400">
+                    <div class="flex justify-between items-center border-b border-slate-700/50 pb-2 md:border-none md:pb-0">
+                        <span>[Ext_Duration_1m]</span>
+                        <span class="font-bold text-white">+$15</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-700/50 pb-2 md:border-none md:pb-0">
+                        <span>[Kinetic_Captions]</span>
+                        <span class="font-bold text-white">+$15</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span>[AI_VFX_Module]</span>
+                        <span class="font-bold text-white">+$15</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 glass-card p-6 rounded-xl border border-yellow-500/30 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-yellow-900/40 to-transparent max-w-5xl mx-auto">
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-1 uppercase tracking-wider">
+                        <i class="fas fa-cubes text-yellow-400 mr-2"></i> Fleet Retainer <span class="text-yellow-400 ml-2 border border-yellow-400 px-2 py-0.5 text-xs bg-yellow-900/50">10% OFF</span>
+                    </h4>
+                    <p class="text-sm text-slate-400 mt-2">Lock in our "10 Videos Pack" to stabilize your cash flow and secure priority processing.</p>
+                </div>
+                <a href="#onboarding" class="btn-sci-fi shrink-0 px-8 py-3 bg-yellow-500/20 text-yellow-400 border border-yellow-400 font-bold rounded uppercase tracking-widest text-sm hover:bg-yellow-500 hover:text-black transition">
+                    Acquire Pack
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="onboarding" class="py-24 relative z-10 border-t border-slate-800/50">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="glass-card p-10 md:p-16 rounded-xl text-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(250,204,21,0.1)_0%,transparent_70%)] pointer-events-none"></div>
+
+                <div class="w-20 h-20 mx-auto bg-black/50 rounded flex items-center justify-center text-4xl text-yellow-400 mb-8 border border-yellow-500/50 shadow-[0_0_20px_rgba(250,204,21,0.3)]">
+                    <i class="fas fa-satellite-dish"></i>
+                </div>
+
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 relative z-10 uppercase tracking-wide">Establish Connection</h2>
+                <p class="text-lg text-slate-400 mb-10 leading-relaxed font-light relative z-10 max-w-2xl mx-auto">
+                    We bypass automated forms. Transmit your trial edit parameters or queries directly to our Lead Editor's comms channel.
+                </p>
+                
+                <div class="relative z-10 flex flex-col items-center">
+                    <a href="mailto:banana360media.st@gmail.com?subject=Trial%20Edit%20Request%20-%20[Your%20Studio%20Name]&body=Hi%20Banana%20360%20Media,%0D%0A%0D%0AI%20would%20like%20to%20request%20a%20trial%20edit%20to%20see%20how%20your%20team%20works.%0D%0A%0D%0AHere%20are%20the%20details:%0D%0A-%20My%20Name/Studio:%20%0D%0A-%20Link%20to%20Footage%20(Drive/Dropbox):%20%0D%0A-%20Specific%20Notes/Style%20(Pace,%20Music,%20etc.):%20%0D%0A%0D%0ALooking%20forward%20to%20working%20with%20you.%0D%0A%0D%0ABest%20regards," 
+                       class="btn-sci-fi inline-flex items-center gap-3 bg-yellow-500/20 text-yellow-400 border border-yellow-400 px-10 py-5 rounded font-bold text-lg hover:bg-yellow-500 hover:text-black transition-all uppercase tracking-widest shadow-[0_0_30px_rgba(250,204,21,0.2)]">
+                        <i class="fas fa-envelope text-xl"></i> Transmit
+                    </a>
+                    
+                    <p class="mt-8 text-sm text-slate-500 font-mono">
+                        > Signal response estimated within 2-4 business hours.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-slate-600 text-sm relative z-10 border-t border-slate-800 bg-black font-mono">
+        <p>SYSTEM ONLINE © 2026 BANANA360MEDIA.COM | ALL PROTOCOLS SECURED</p>
     </footer>
 
     <script>
-        // --- JavaScript để chuyển Tab B1/B2 (từ price.html) ---
-        function showTab(tabId) {
-            const tabs = ['b1', 'b2'];
-            
-            tabs.forEach(id => {
-                const tabButton = document.getElementById(`tab-${id}`);
-                const tabContent = document.getElementById(`content-${id}`);
-                
-                // Kiểm tra xem element có tồn tại không trước khi thao tác
-                if (tabButton && tabContent) {
-                    if (id === tabId) {
-                        tabButton.classList.add('tab-active');
-                        tabButton.classList.remove('tab-inactive');
-                        tabContent.style.display = 'block'; // Hiển thị tab
-                    } else {
-                        tabButton.classList.remove('tab-active');
-                        tabButton.classList.add('tab-inactive');
-                        tabContent.style.display = 'none'; // Ẩn tab
-                    }
-                }
-            });
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('max-h-0', 'opacity-0');
+                mobileMenu.classList.add('max-h-96', 'opacity-100');
+                menuBtn.innerHTML = '<i class="fas fa-times"></i>'; 
+            } else {
+                mobileMenu.classList.remove('max-h-96', 'opacity-100');
+                mobileMenu.classList.add('max-h-0', 'opacity-0');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>'; 
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', (event) => {
-            
-            // --- 1. Hiệu ứng xuất hiện khi cuộn (Giữ nguyên) ---
-            const sections = document.querySelectorAll('.section');
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 }); 
+        menuBtn.addEventListener('click', toggleMenu);
 
-            const heroSection = document.querySelector('.hero');
-            if (heroSection) {
-                 heroSection.style.animationPlayState = 'running';
-            }
-            sections.forEach(section => {
-                if (!section.classList.contains('hero')) {
-                     observer.observe(section);
-                }
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) toggleMenu();
             });
-
-            // --- KHỞI TẠO TAB VÀ ICON (TỪ PRICE.HTML) ---
-            showTab('b1'); // Mặc định hiển thị tab B1
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons(); // Vẽ các icon
-            }
-            // --- HẾT PHẦN THÊM MỚI ---
-
-            // --- 2. Hiệu ứng Accordion cho FAQ (Giữ nguyên) ---
-            const faqItems = document.querySelectorAll('.faq-item');
-            
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                const answer = item.querySelector('.faq-answer');
-                
-                question.addEventListener('click', () => {
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== item && otherItem.classList.contains('active')) {
-                            otherItem.classList.remove('active');
-                            otherItem.querySelector('.faq-answer').style.maxHeight = '0';
-                        }
-                    });
-
-                    item.classList.toggle('active');
-                    if (item.classList.contains('active')) {
-                        answer.style.maxHeight = answer.scrollHeight + 'px';
-                    } else {
-                        answer.style.maxHeight = '0';
-                    }
-                });
-            });
-            
-            // --- 3. LOGIC MỚI CHO MENU MOBILE ---
-            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-            const nav = document.querySelector('nav');
-            const navLinks = document.querySelectorAll('.nav-menu li a');
-            
-            // Khi bấm nút hamburger
-            mobileNavToggle.addEventListener('click', () => {
-                nav.classList.toggle('mobile-active');
-                
-                // Cập nhật thuộc tính cho người dùng khiếm thị
-                const isExpanded = nav.classList.contains('mobile-active');
-                mobileNavToggle.setAttribute('aria-expanded', isExpanded);
-            });
-            
-            // Khi bấm vào 1 link trong menu (ví dụ: #services)
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    // Tự động đóng menu lại
-                    if (nav.classList.contains('mobile-active')) {
-                        nav.classList.remove('mobile-active');
-                        mobileNavToggle.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            });
-
         });
     </script>
-
 </body>
 </html>
